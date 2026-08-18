@@ -12,5 +12,9 @@ Route::get('/contact', function () {
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+    return view('blog', ["tittle" => "blog page"]);
+});
+
+Route::get('/about', function () {
+    return view('/about', ['tittle' => 'about page']);
 });
