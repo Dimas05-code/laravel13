@@ -16,6 +16,12 @@ Route::get('/post', function () {
         'title' => 'Article 1',
         'author' => 'Dimas Wahyu Nugroho',
         'isi' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam quaerat    consectetur alias porro deserunt recusandae error eaque saepe ipsum sapiente dignissimos ut ex quis dolores officia vel maxime, facere reprehenderit.'
+    ], [
+        'title' => 'Artikel 2',
+        'author' => 'Muhammad Adit',
+        'isi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut eaque expedita enim in
+            magnam natus nam repellendus ab laboriosam amet omnis, corrupti consequatur repudiandae ullam consequuntur
+            provident temporibus esse assumenda.'
     ]];
     return view('post', ["tittle" => "blog page", 'posts' => $posts]);
 });
