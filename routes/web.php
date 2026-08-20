@@ -64,7 +64,7 @@ Route::get('/post/{slug}', function ($slug) {
         return $post['slug'] == $slug;
     });
 
-    // jika id tidak ditemuka
+    // jika id tidak ditemukan
     if (!$post) abort(404);
 
     // dd($post);
