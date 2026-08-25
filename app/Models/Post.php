@@ -1,6 +1,6 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -8,7 +8,7 @@ use Illuminate\Support\Arr;
 
 class Post extends Model
 {
-    // public static function all()
+    // public static functioccln all()
     // {
     //     return [[
     //         'id' => 1,
@@ -37,4 +37,13 @@ class Post extends Model
     // menggunakan arrow function
     //     return Arr::first(static::all(), fn($post) => $post['slug'] == $slug) ?? abort(404);
     // }
+
+    // $fillable ==> yang bisa di isi secara massal
+    protected $fillable = ['tittle', 'slug', 'author', 'isi'];
+
+    // $guard ==> yang tidak bisa di isi secara massal (lainnya bisa)
+    // protected $guard = ['id']
+
+    // mematikan kewajiban mengisi fillable di semua model
+    // Model::unguard() ==> tapi sebagai ganti nya harus memvalidasi request yang masuk
 }

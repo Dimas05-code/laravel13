@@ -24,7 +24,7 @@ Route::get('/post', function () {
 Route::get('/post/{post:slug}', function (Post $post) //==> sudah menggunakan route mode binding
 {
 
-    // dd($id); ==> untuk melihat data array
+    // dd($id); ==> untuk melihat data arraydd
 
     // $post = Post::find($slug);
 
