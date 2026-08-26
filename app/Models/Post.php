@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
@@ -37,6 +38,9 @@ class Post extends Model
     // menggunakan arrow function
     //     return Arr::first(static::all(), fn($post) => $post['slug'] == $slug) ?? abort(404);
     // }
+
+    // jika membuat factory otomatis harus menambhakan ini
+    use HasFactory;
 
     // $fillable ==> yang bisa di isi secara massal
     protected $fillable = ['tittle', 'slug', 'author', 'isi'];

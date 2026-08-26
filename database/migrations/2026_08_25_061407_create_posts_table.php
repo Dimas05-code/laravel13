@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('tittle');
             $table->string('slug');
-            $table->string('author');
+            // $table->string('author');
+
+            $table->unsignedBigInteger('author_id');
+            $table->foreign('author_id')->references('id')->on('users');
+
             $table->text('isi');
             $table->timestamps();
         });
