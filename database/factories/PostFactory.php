@@ -24,8 +24,11 @@ class PostFactory extends Factory
             'tittle' => $post,
             'slug' => Str::slug($post),
 
+            // 'author' => fake()->name(),
+
             // buat data post sekalian data user dibuatkan
             'author_id' => User::factory(),
+
             'isi' => fake()->text(),
         ];
     }

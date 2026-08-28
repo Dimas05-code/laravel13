@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Arr;
 
 
@@ -43,11 +44,17 @@ class Post extends Model
     use HasFactory;
 
     // $fillable ==> yang bisa di isi secara massal
-    protected $fillable = ['tittle', 'slug', 'author', 'isi'];
+    protected $fillable = ['tittle', 'slug', 'author_id', 'isi'];
 
     // $guard ==> yang tidak bisa di isi secara massal (lainnya bisa)
     // protected $guard = ['id']
 
     // mematikan kewajiban mengisi fillable di semua model
     // Model::unguard() ==> tapi sebagai ganti nya harus memvalidasi request yang masuk
+
+    // One to one/invers(kebalikan) (BelongsTo) ==> Satu post dimiliki satu user
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
