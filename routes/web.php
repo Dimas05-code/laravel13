@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,7 +18,11 @@ Route::get('/post', function () {
     // memamnggil class post yang diatas
     $post = Post::all();
 
-    return view('post', ["tittle" => "blog page", 'posts' => $post]);
+    return view('post', ['tittle' => 'blog pagee', 'posts' => $post]);
+});
+
+Route::get('/authors/{user}', function (User $user) {
+    return view('post', ['tittle' => 'article by ' . $user->name, 'posts' => $user->posts]);
 });
 
 // teknik route wildcard => menangkap  nilai dan di masukkean ke variabel
