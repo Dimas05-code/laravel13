@@ -24,7 +24,7 @@ Route::get('/posts', function () {
 
 // 4. Halaman Daftar Artikel Berdasarkan Penulis
 Route::get('/authors/{user:username}', function (User $user) {
-    return view('posts', ['tittle' => 'article by ' . $user->name, 'posts' => $user->posts]);
+    return view('posts', ['tittle' => 'Ada ' . count($user->posts) . ' article by ' . $user->name, 'posts' => $user->posts]);
 });
 
 // 5. Halaman Detail Satu Artikel ( Rute diubah menjadi /posts{slug} agar rapi)
