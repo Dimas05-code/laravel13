@@ -32,6 +32,7 @@ class PostFactory extends Factory
             // buat data post sekalian data user dibuatkan
             'author_id' => User::factory(),
             'category_id' => Category::factory(),
+
             'isi' => fake()->text(),
         ];
     }
