@@ -1,4 +1,4 @@
-{{-- Memanggil komponen x-layout sebagai kerangka utama web --}}
+a{{-- Memanggil komponen x-layout sebagai kerangka utama web --}}
 <x-layout :tittle="$tittle">
 
     {{-- PERHATIAN: Di halaman ini TIDAK ADA @foreach karena kita hanya menerima 
@@ -13,7 +13,11 @@
              Menampilkan pembuat artikel ini. Jika diklik, pengunjung akan diarahkan 
              ke halaman profil penulis yang berisi seluruh daftar artikel milik orang tersebut. --}}
         <div class="text-base text-gray-500">
-            <a href="/authors/{{ $post->author->username }}" class="hover:underline">{{ $post->author->name }}</a>
+            by <a href="/authors/{{ $post->author->username }}"
+                class="text-gray-900 hover:underline">{{ $post->author->name }} in </a>
+            <a href="/categories/{{ $post->category->slug }}"
+                class="text-gray-900
+                hover:underline">{{ $post->category->name }}</a>
         </div>
 
         {{-- ISI ARTIKEL FULL: 

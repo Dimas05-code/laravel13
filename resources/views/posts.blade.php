@@ -18,7 +18,11 @@
                  '$post->author->name' artinya: "Hai Artikel ($post), tolong panggilkan Penulismu (author), 
                  lalu ambilkan Namanya (name)". Ini terjadi berkat relasi yang dibuat di file Model. --}}
             <div class="text-base text-gray-500">
-                <a href="/authors/{{ $post->author->username }}" class="hover:underline">{{ $post->author->name }}</a>
+                by <a href="/authors/{{ $post->author->username }}"
+                    class="text-gray-900 hover:underline">{{ $post->author->name }} in </a>
+                <a href="/categories/{{ $post->category->slug }}"
+                    class="text-gray-900
+                hover:underline">{{ $post->category->name }}</a>
             </div>
 
             {{-- CUPLIKAN ISI ARTIKEL: 

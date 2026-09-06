@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,12 @@ Route::get('/authors/{user:username}', function (User $user) {
     return view('posts', ['tittle' => 'Ada ' . count($user->posts) . ' article by ' . $user->name, 'posts' => $user->posts]);
 });
 
-// 5. Halaman Detail Satu Artikel ( Rute diubah menjadi /posts{slug} agar rapi)
+// 5. Halaman Daftar Artikel Berdasarkan Category
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('posts', ['tittle' => 'Category by ' . $category->name, 'posts' => $category->posts]);
+});
+
+// 6. Halaman Detail Satu Artikel ( Rute diubah menjadi /posts{slug} agar rapi)
 // teknik route wildcard => menangkap  nilai dan di masukkean ke variabel
 Route::get('/posts/{post:slug}', function (Post $post) //==> sudah menggunakan route mode binding
 {
@@ -43,7 +49,7 @@ Route::get('/posts/{post:slug}', function (Post $post) //==> sudah menggunakan r
     return view('post', ['tittle' => 'singular post', 'post' => $post]);
 });
 
-// 6. Halaman About
+// 7. Halaman About
 Route::get('/about', function () {
     return view('about', ['tittle' => 'about page']);
 });
