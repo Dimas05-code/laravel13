@@ -17,21 +17,40 @@ Route::get('/contact', function () {
 
 // 3. Halam Semua Daftar Posts
 Route::get('/posts', function () {
-    // memamnggil class post yang diatas
-    $posts = Post::all();
-
+    // latest() ==> untuk memanggil data dari yang terbaru
+    $posts = Post::latest()->get();
     return view('posts', ['tittle' => 'blog pagee', 'posts' => $posts]);
 });
+
+// Route::get('/posts', function () {
+//     // latest() ==> untuk memanggil data dari yang terbaru
+//     // EAGER LOADER
+//     $posts = Post::with(['author', 'category'])->latest()->get();
+//     return view('posts', ['tittle' => 'blog pagee', 'posts' => $posts]);
+// });
 
 // 4. Halaman Daftar Artikel Berdasarkan Penulis
 Route::get('/authors/{user:username}', function (User $user) {
     return view('posts', ['tittle' => 'Ada ' . count($user->posts) . ' article by ' . $user->name, 'posts' => $user->posts]);
 });
 
+// Lazy Eager Loading
+// Route::get('/authors/{user:username}', function (User $user) {
+//     $posts = $user->posts->load('category');
+//     return view('posts', ['tittle' => 'Ada ' . count($posts) . ' article by ' . $user->name, 'posts' => $posts]);
+// });
+
+
 // 5. Halaman Daftar Artikel Berdasarkan Category
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', ['tittle' => 'Category by ' . $category->name, 'posts' => $category->posts]);
 });
+
+// Route::get('/categories/{category:slug}', function (Category $category) {
+//     // Lazy Eager Loading
+//     $posts = $category->posts->load('author');
+//     return view('posts', ['tittle' => 'Category by ' . $category->name, 'posts' => $posts]);
+// });
 
 // 6. Halaman Detail Satu Artikel ( Rute diubah menjadi /posts{slug} agar rapi)
 // teknik route wildcard => menangkap  nilai dan di masukkean ke variabel

@@ -14,6 +14,7 @@ class Category extends Model
     // Satu Kategori Memiliki Banyal Post
     public function posts(): HasMany
     {
+        // 
         return $this->hasMany(Post::class);
     }
 }

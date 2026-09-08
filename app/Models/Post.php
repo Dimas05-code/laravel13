@@ -49,6 +49,9 @@ class Post extends Model
     // $guard ==> yang tidak bisa di isi secara massal (lainnya bisa)
     // protected $guard = ['id']
 
+    // Eager Loading By default
+    protected $with = ['author', 'category'];
+
     // mematikan kewajiban mengisi fillable di semua model
     // Model::unguard() ==> tapi sebagai ganti nya harus memvalidasi request yang masuk
 
@@ -58,6 +61,7 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    // satu post memiliki satu kategory
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
